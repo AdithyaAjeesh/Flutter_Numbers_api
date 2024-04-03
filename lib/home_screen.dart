@@ -7,7 +7,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<FunctionProvider>(context);
+    final provider = Provider.of<FunctionProvider>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Get Random Facts About Numbers'),
@@ -18,22 +18,24 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              padding: const EdgeInsets.all(20),
-              margin: const EdgeInsets.only(bottom: 50),
-              decoration: BoxDecoration(
-                  color: Colors.blue.withOpacity(0.7),
-                  borderRadius: BorderRadius.circular(15)),
-              height: 250,
-              width: 250,
-              child: Text(
-                provider.output,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
+            Consumer<FunctionProvider>(builder: (context, pro, child) {
+              return Container(
+                padding: const EdgeInsets.all(20),
+                margin: const EdgeInsets.only(bottom: 50),
+                decoration: BoxDecoration(
+                    color: Colors.blue.withOpacity(0.7),
+                    borderRadius: BorderRadius.circular(15)),
+                height: 250,
+                width: 250,
+                child: Text(
+                  pro.output,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
                 ),
-              ),
-            ),
+              );
+            }),
             Container(
               padding: const EdgeInsets.all(20),
               child: Column(
