@@ -41,6 +41,7 @@ class HomeScreen extends StatelessWidget {
                   TextField(
                     controller: provider.numberController,
                     decoration: InputDecoration(
+                      hintText: 'Enter a Number',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
